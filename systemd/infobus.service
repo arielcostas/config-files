@@ -1,0 +1,24 @@
+[Unit]
+Description=Infobus telegram bot
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/infobus
+User=app
+Type=simple
+Restart=on-failure
+RestartSec=15
+EnvironmentFile=/etc/default/infobus
+ExecStart=/opt/infobus/Vigo360.InfobusBot
+
+ProtectDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=default.target
